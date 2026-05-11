@@ -1,24 +1,28 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --bg: #f6f5f2;
+  --bg: #f7f6f2;
   --surface: #ffffff;
   --card: #ffffff;
-  --border: #e8e6e1;
-  --accent: #1d4ed8;
-  --accent-hover: #1e40af;
-  --text: #111827;
-  --muted: #6b7280;
+  --border: #e5e3de;
+  --nav-bg: #0f172a;
+  --nav-text: #cbd5e1;
+  --accent: #e05c3a;
+  --accent-hover: #c94e2e;
+  --text: #0f172a;
+  --muted: #64748b;
   --success: #059669;
+  --tag-bg: #fff4f1;
+  --tag-text: #e05c3a;
 }
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'DM Sans', system-ui, sans-serif;
+  font-family: 'Nunito', system-ui, sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Syne', system-ui, sans-serif;
+h1, h2, h3 {
+  font-family: 'DM Serif Display', Georgia, serif;
 }
