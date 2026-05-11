@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\yokotate41\\\\Desktop\\\\ClaudeCodeTutorial\\\\my_own_video_platform\" -Recurse -Force | Select-Object FullName | ForEach-Object { $_.FullName -replace [regex]::Escape\\(\"C:\\\\Users\\\\yokotate41\\\\Desktop\\\\ClaudeCodeTutorial\\\\my_own_video_platform\"\\), \".\" } | Sort-Object)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\yokotate41\\\\Desktop\\\\ClaudeCodeTutorial\\\\my_own_video_platform\" | ForEach-Object { $_.Name })",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\yokotate41\\\\Desktop\\\\ClaudeCodeTutorial\\\\my_own_video_platform\" -Force | Select-Object Name, @{Name=\"Type\"; Expression={if\\($_.PSIsContainer\\){\"Directory\"}else{\"File\"}}} | Format-Table -AutoSize)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --app --src-dir --no-eslint --import-alias \"@/*\" --yes)",
+      "PowerShell(New-Item *)",
+      "PowerShell(Move-Item *)",
+      "mcp__mcp-turso-cloud__list_databases",
+      "Bash(python3 -c \"import sys, base64, json; data = sys.stdin.read\\(\\).strip\\(\\); data += '=' * \\(4 - len\\(data\\) % 4\\); print\\(json.dumps\\(json.loads\\(base64.urlsafe_b64decode\\(data\\)\\), indent=2\\)\\)\")",
+      "PowerShell($response = Invoke-RestMethod -Uri \"https://api.turso.tech/v1/organizations/thinkinglabkidsprogramming-dot/databases\" -Headers @{\"Authorization\" = \"Bearer eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJfaG5qYjB6X0VmR1dHX2IwTEd6V0RRIiwib3JnX2lkIjoxMDAwMTYyODgzfQ.lYOFxf8hLQojdTMKbpGybfdfvwi9ZzB4-l3Gv5168o3YwBeVxV0WjfKkJ_L23f7V3B1IOpEBsrFfYPy6txDRCQ\"} -ErrorVariable err; $response | ConvertTo-Json -Depth 5; if \\($err\\) { \"Error: $err\" })",
+      "PowerShell($token = \"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJfaG5qYjB6X0VmR1dHX2IwTEd6V0RRIiwib3JnX2lkIjoxMDAwMTYyODgzfQ.lYOFxf8hLQojdTMKbpGybfdfvwi9ZzB4-l3Gv5168o3YwBeVxV0WjfKkJ_L23f7V3B1IOpEBsrFfYPy6txDRCQ\"; $body = @{name=\"video-platform\"; group=\"default\"} | ConvertTo-Json; $response = Invoke-RestMethod -Uri \"https://api.turso.tech/v1/organizations/thinkinglabkidsprogramming-dot/databases\" -Method POST -Headers @{\"Authorization\" = \"Bearer $token\"; \"Content-Type\" = \"application/json\"} -Body $body; $response | ConvertTo-Json -Depth 5)",
+      "PowerShell($token = \"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJfaG5qYjB6X0VmR1dHX2IwTEd6V0RRIiwib3JnX2lkIjoxMDAwMTYyODgzfQ.lYOFxf8hLQojdTMKbpGybfdfvwi9ZzB4-l3Gv5168o3YwBeVxV0WjfKkJ_L23f7V3B1IOpEBsrFfYPy6txDRCQ\"; Invoke-RestMethod -Uri \"https://api.turso.tech/v1/organizations/thinkinglabkidsprogramming-dot/groups\" -Headers @{\"Authorization\" = \"Bearer $token\"} | ConvertTo-Json -Depth 5)",
+      "PowerShell($token = \"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJfaG5qYjB6X0VmR1dHX2IwTEd6V0RRIiwib3JnX2lkIjoxMDAwMTYyODgzfQ.lYOFxf8hLQojdTMKbpGybfdfvwi9ZzB4-l3Gv5168o3YwBeVxV0WjfKkJ_L23f7V3B1IOpEBsrFfYPy6txDRCQ\"; $body = @{name=\"default\"; locations=@\\(\"nrt\"\\)} | ConvertTo-Json; $response = Invoke-RestMethod -Uri \"https://api.turso.tech/v1/organizations/thinkinglabkidsprogramming-dot/groups\" -Method POST -Headers @{\"Authorization\" = \"Bearer $token\"; \"Content-Type\" = \"application/json\"} -Body $body; $response | ConvertTo-Json -Depth 5)",
+      "PowerShell($token = \"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJfaG5qYjB6X0VmR1dHX2IwTEd6V0RRIiwib3JnX2lkIjoxMDAwMTYyODgzfQ.lYOFxf8hLQojdTMKbpGybfdfvwi9ZzB4-l3Gv5168o3YwBeVxV0WjfKkJ_L23f7V3B1IOpEBsrFfYPy6txDRCQ\"; $body = '{\"name\":\"default\",\"locations\":[\"nrt\"]}'; $response = Invoke-RestMethod -Uri \"https://api.turso.tech/v1/organizations/thinkinglabkidsprogramming-dot/groups\" -Method POST -Headers @{\"Authorization\" = \"Bearer $token\"; \"Content-Type\" = \"application/json\"} -Body $body; $response | ConvertTo-Json -Depth 5)",
+      "PowerShell($token = \"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJfaG5qYjB6X0VmR1dHX2IwTEd6V0RRIiwib3JnX2lkIjoxMDAwMTYyODgzfQ.lYOFxf8hLQojdTMKbpGybfdfvwi9ZzB4-l3Gv5168o3YwBeVxV0WjfKkJ_L23f7V3B1IOpEBsrFfYPy6txDRCQ\"; Invoke-RestMethod -Uri \"https://api.turso.tech/v1/locations\" -Headers @{\"Authorization\" = \"Bearer $token\"} | ConvertTo-Json -Depth 5)",
+      "PowerShell($token = \"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJfaG5qYjB6X0VmR1dHX2IwTEd6V0RRIiwib3JnX2lkIjoxMDAwMTYyODgzfQ.lYOFxf8hLQojdTMKbpGybfdfvwi9ZzB4-l3Gv5168o3YwBeVxV0WjfKkJ_L23f7V3B1IOpEBsrFfYPy6txDRCQ\"; $body = '{\"name\":\"default\",\"locations\":[\"aws-ap-northeast-1\"]}'; $response = Invoke-RestMethod -Uri \"https://api.turso.tech/v1/organizations/thinkinglabkidsprogramming-dot/groups\" -Method POST -Headers @{\"Authorization\" = \"Bearer $token\"; \"Content-Type\" = \"application/json\"} -Body $body; $response | ConvertTo-Json -Depth 5)",
+      "mcp__mcp-turso-cloud__create_database",
+      "PowerShell(node --version; npx --version)",
+      "PowerShell(node -e \"fetch\\('https://api.turso.tech/v1/locations'\\).then\\(r=>r.json\\(\\)\\).then\\(d=>console.log\\(JSON.stringify\\(d\\)\\)\\).catch\\(e=>console.error\\(e.message\\)\\)\")",
+      "PowerShell(node -e \"const https = require\\('https'\\); https.get\\('https://api.turso.tech/v1/locations', {headers:{Authorization:'Bearer test'}}, r=>{let d=''; r.on\\('data',c=>d+=c\\); r.on\\('end',\\(\\)=>console.log\\(d\\)\\)}\\).on\\('error',e=>console.error\\(e.message\\)\\)\")",
+      "PowerShell(node --use-system-ca -e \"fetch\\('https://api.turso.tech/v1/locations'\\).then\\(r=>r.json\\(\\)\\).then\\(d=>console.log\\(JSON.stringify\\(d\\)\\)\\).catch\\(e=>console.error\\(e.message\\)\\)\")",
+      "PowerShell(turso group *)",
+      "mcp__mcp-turso-cloud__generate_database_token",
+      "mcp__mcp-turso-cloud__delete_database",
+      "PowerShell(npm run *)",
+      "mcp__mcp-turso-cloud__execute_query",
+      "mcp__mcp-turso-cloud__list_tables",
+      "PowerShell(-join \\(\\(65..90\\) + \\(97..122\\) + \\(48..57\\) | Get-Random -Count 32 | ForEach-Object { [char]$_ }\\))",
+      "PowerShell(try { $r = Invoke-WebRequest -Uri \"http://localhost:3000\" -TimeoutSec 10; \"Status: $\\($r.StatusCode\\)\" } catch { \"Error: $_\" })",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "PowerShell(taskkill *)",
+      "PowerShell(netstat *)",
+      "mcp__mcp-turso-cloud__execute_read_only_query"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "mcp-turso-cloud"
+  ]
+}
