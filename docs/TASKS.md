@@ -14,9 +14,9 @@
 - [x] Drizzle ORM + Turso 接続設定
 - [x] Better-auth (Google OAuth) 設定
 - [x] Vercel Blob 設定
-- [ ] Turso データベース作成・接続
-- [ ] Google Cloud Console で OAuth クライアント作成
-- [ ] Vercel Blob ストア作成
+- [x] Turso データベース作成・接続
+- [x] Google Cloud Console で OAuth クライアント作成
+- [x] Vercel Blob ストア作成
 - [ ] `npm run db:push` でマイグレーション実行
 
 ---
@@ -76,17 +76,17 @@
 ## デプロイ
 
 - [ ] GitHub リポジトリ作成・プッシュ
-- [ ] Vercel にプロジェクト追加
-- [ ] Vercel に環境変数を設定
-  - [ ] `TURSO_DATABASE_URL`
-  - [ ] `TURSO_AUTH_TOKEN`
-  - [ ] `BETTER_AUTH_SECRET`
-  - [ ] `BETTER_AUTH_URL`
-  - [ ] `NEXT_PUBLIC_BETTER_AUTH_URL`
-  - [ ] `GOOGLE_CLIENT_ID`
-  - [ ] `GOOGLE_CLIENT_SECRET`
-  - [ ] `BLOB_READ_WRITE_TOKEN`
-- [ ] 本番URLを Google OAuth のリダイレクトURIに追加
+- [x] Vercel にプロジェクト追加
+- [x] Vercel に環境変数を設定
+  - [x] `TURSO_DATABASE_URL`
+  - [x] `TURSO_AUTH_TOKEN`
+  - [x] `BETTER_AUTH_SECRET`
+  - [x] `BETTER_AUTH_URL`
+  - [x] `NEXT_PUBLIC_BETTER_AUTH_URL`
+  - [x] `GOOGLE_CLIENT_ID`
+  - [x] `GOOGLE_CLIENT_SECRET`
+  - [x] `BLOB_READ_WRITE_TOKEN`
+- [x] 本番URLを Google OAuth のリダイレクトURIに追加
 - [ ] 本番動作確認
 
 ---

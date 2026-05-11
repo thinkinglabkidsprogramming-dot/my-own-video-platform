@@ -16,16 +16,59 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="bg-white p-8 rounded-xl shadow w-full max-w-md text-center">
-        <h1 className="text-2xl font-bold mb-2">ログイン</h1>
-        <p className="text-gray-500 text-sm mb-8">動画講座プラットフォーム</p>
+    <div
+      className="min-h-screen flex items-center justify-center px-4"
+      style={{ background: "var(--bg)" }}
+    >
+      <div
+        className="w-full max-w-sm"
+        style={{
+          background: "var(--card)",
+          border: "1px solid var(--border)",
+          borderRadius: "1rem",
+          padding: "2.5rem 2rem",
+        }}
+      >
+        <div className="text-center mb-8">
+          <p
+            style={{
+              fontFamily: "'Syne', sans-serif",
+              fontWeight: 800,
+              color: "var(--accent)",
+              fontSize: "1.5rem",
+              letterSpacing: "-0.02em",
+              marginBottom: "0.5rem",
+            }}
+          >
+            動画講座
+          </p>
+          <p style={{ color: "var(--muted)", fontSize: "0.875rem" }}>
+            アカウントにログインして学習を始めよう
+          </p>
+        </div>
+
         <button
           onClick={handleGoogleLogin}
           disabled={loading}
-          className="w-full flex items-center justify-center gap-3 border border-gray-300 rounded-lg px-4 py-3 hover:bg-gray-50 disabled:opacity-50 transition font-medium text-gray-700"
+          style={{
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "0.75rem",
+            background: loading ? "var(--border)" : "var(--text)",
+            color: "var(--bg)",
+            fontWeight: 600,
+            padding: "0.75rem 1.25rem",
+            borderRadius: "0.6rem",
+            fontSize: "0.9rem",
+            border: "none",
+            cursor: loading ? "not-allowed" : "pointer",
+            transition: "opacity 0.2s",
+          }}
+          className="hover:opacity-90"
         >
-          <svg className="w-5 h-5" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24">
             <path
               fill="#4285F4"
               d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -43,7 +86,7 @@ export default function LoginPage() {
               d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
             />
           </svg>
-          {loading ? "リダイレクト中..." : "Googleでログイン"}
+          {loading ? "接続中..." : "Googleでログイン"}
         </button>
       </div>
     </div>

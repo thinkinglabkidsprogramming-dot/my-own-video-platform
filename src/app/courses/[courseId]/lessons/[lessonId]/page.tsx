@@ -61,12 +61,24 @@ export default async function LessonPage({
         <div className="mb-4">
           <Link
             href={`/courses/${courseId}`}
-            className="text-sm text-blue-600 hover:underline"
+            style={{ color: "var(--muted)", fontSize: "0.875rem" }}
+            className="hover:text-[var(--accent)] transition-colors"
           >
             ← コース詳細に戻る
           </Link>
         </div>
-        <h1 className="text-xl font-bold text-gray-900 mb-4">{lesson.title}</h1>
+        <h1
+          style={{
+            fontFamily: "'Syne', sans-serif",
+            fontWeight: 700,
+            color: "var(--text)",
+            fontSize: "1.25rem",
+            marginBottom: "1rem",
+            letterSpacing: "-0.02em",
+          }}
+        >
+          {lesson.title}
+        </h1>
         <LessonPlayer
           videoId={lesson.youtubeVideoId}
           lessonId={lessonId}
@@ -77,16 +89,40 @@ export default async function LessonPage({
       </div>
 
       <aside className="w-72 flex-shrink-0 hidden lg:block">
-        <div className="bg-white rounded-xl shadow overflow-hidden sticky top-4">
-          <div className="px-4 py-3 border-b">
-            <p className="font-semibold text-sm text-gray-800 truncate">
+        <div
+          className="sticky top-4 overflow-hidden"
+          style={{
+            background: "var(--card)",
+            border: "1px solid var(--border)",
+            borderRadius: "0.75rem",
+          }}
+        >
+          <div
+            className="px-4 py-3"
+            style={{ borderBottom: "1px solid var(--border)" }}
+          >
+            <p
+              className="text-sm truncate"
+              style={{
+                fontFamily: "'Syne', sans-serif",
+                fontWeight: 700,
+                color: "var(--text)",
+              }}
+            >
               {lesson.chapter.course.title}
             </p>
           </div>
           <div className="overflow-y-auto max-h-[70vh]">
             {courseChapters.map((chapter) => (
               <div key={chapter.id}>
-                <div className="px-4 py-2 bg-gray-50 text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                <div
+                  className="px-4 py-2 text-xs font-semibold uppercase tracking-widest"
+                  style={{
+                    background: "var(--surface)",
+                    color: "var(--muted)",
+                    borderBottom: "1px solid var(--border)",
+                  }}
+                >
                   {chapter.title}
                 </div>
                 <ul>
@@ -94,21 +130,23 @@ export default async function LessonPage({
                     const done = completedLessonIds.has(l.id);
                     const active = l.id === lessonId;
                     return (
-                      <li key={l.id}>
+                      <li key={l.id} style={{ borderBottom: "1px solid var(--border)" }}>
                         <Link
                           href={`/courses/${courseId}/lessons/${l.id}`}
-                          className={`flex items-center gap-2 px-4 py-2.5 text-sm transition ${
-                            active
-                              ? "bg-blue-50 text-blue-700 font-medium"
-                              : "hover:bg-gray-50 text-gray-600"
-                          }`}
+                          className="flex items-center gap-2 px-4 py-2.5 text-sm transition-colors"
+                          style={{
+                            background: active ? "rgba(232,184,75,0.1)" : "transparent",
+                            color: active ? "var(--accent)" : "var(--muted)",
+                            fontWeight: active ? 600 : 400,
+                          }}
                         >
                           <span
-                            className={`flex-shrink-0 w-4 h-4 rounded-full border flex items-center justify-center text-[10px] ${
-                              done
-                                ? "bg-blue-600 border-blue-600 text-white"
-                                : "border-gray-300"
-                            }`}
+                            className="flex-shrink-0 w-4 h-4 rounded-full border flex items-center justify-center text-[10px]"
+                            style={{
+                              background: done ? "var(--accent)" : "transparent",
+                              borderColor: done ? "var(--accent)" : "var(--border)",
+                              color: done ? "#0b0a12" : "var(--border)",
+                            }}
                           >
                             {done ? "✓" : ""}
                           </span>

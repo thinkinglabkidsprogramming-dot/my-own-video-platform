@@ -45,11 +45,18 @@ export default function LessonPlayer({
         <button
           onClick={toggleComplete}
           disabled={loading}
-          className={`px-6 py-2 rounded-lg font-medium transition ${
-            completed
-              ? "bg-green-100 text-green-700 hover:bg-green-200"
-              : "bg-blue-600 text-white hover:bg-blue-700"
-          } disabled:opacity-50`}
+          style={{
+            padding: "0.5rem 1.5rem",
+            borderRadius: "0.5rem",
+            fontWeight: 600,
+            fontSize: "0.875rem",
+            border: "none",
+            cursor: loading ? "not-allowed" : "pointer",
+            transition: "opacity 0.2s",
+            background: completed ? "rgba(74,222,128,0.15)" : "var(--accent)",
+            color: completed ? "var(--success)" : "#0b0a12",
+            opacity: loading ? 0.6 : 1,
+          }}
         >
           {loading
             ? "更新中..."
@@ -58,9 +65,13 @@ export default function LessonPlayer({
               : "完了済みにする"}
         </button>
       ) : (
-        <p className="text-sm text-gray-500">
+        <p className="text-sm" style={{ color: "var(--muted)" }}>
           進捗を記録するには
-          <a href="/login" className="text-blue-600 hover:underline mx-1">
+          <a
+            href="/login"
+            style={{ color: "var(--accent)", margin: "0 0.25rem" }}
+            className="hover:underline"
+          >
             ログイン
           </a>
           してください

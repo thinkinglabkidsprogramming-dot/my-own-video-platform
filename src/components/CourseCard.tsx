@@ -25,8 +25,23 @@ export default function CourseCard({
 
   return (
     <Link href={`/courses/${id}`} className="block group">
-      <div className="bg-white rounded-xl shadow hover:shadow-md transition overflow-hidden">
-        <div className="relative aspect-video bg-gray-200">
+      <div
+        style={{
+          background: "var(--card)",
+          border: "1px solid var(--border)",
+          borderRadius: "0.75rem",
+          overflow: "hidden",
+          transition: "border-color 0.2s, transform 0.2s",
+        }}
+        className="group-hover:-translate-y-1"
+        onMouseEnter={(e) =>
+          (e.currentTarget.style.borderColor = "var(--accent)")
+        }
+        onMouseLeave={(e) =>
+          (e.currentTarget.style.borderColor = "var(--border)")
+        }
+      >
+        <div className="relative aspect-video" style={{ background: "var(--border)" }}>
           {thumbnailPath ? (
             <Image
               src={thumbnailPath}
@@ -35,32 +50,54 @@ export default function CourseCard({
               className="object-cover"
             />
           ) : (
-            <div className="flex items-center justify-center h-full text-gray-400 text-sm">
+            <div
+              className="flex items-center justify-center h-full text-sm"
+              style={{ color: "var(--muted)" }}
+            >
               サムネイルなし
             </div>
           )}
         </div>
         <div className="p-4">
-          <h2 className="font-semibold text-gray-900 group-hover:text-blue-600 transition line-clamp-2">
+          <h2
+            style={{
+              fontFamily: "'Syne', sans-serif",
+              fontWeight: 700,
+              color: "var(--text)",
+              fontSize: "1rem",
+              lineClamp: 2,
+              transition: "color 0.2s",
+            }}
+            className="line-clamp-2 group-hover:text-[var(--accent)]"
+          >
             {title}
           </h2>
           {description && (
-            <p className="text-sm text-gray-500 mt-1 line-clamp-2">
+            <p
+              className="text-sm mt-1.5 line-clamp-2"
+              style={{ color: "var(--muted)" }}
+            >
               {description}
             </p>
           )}
           {progress !== null && (
             <div className="mt-3">
-              <div className="flex justify-between text-xs text-gray-500 mb-1">
+              <div className="flex justify-between text-xs mb-1" style={{ color: "var(--muted)" }}>
                 <span>進捗</span>
                 <span>
                   {completedCount}/{totalCount}
                 </span>
               </div>
-              <div className="w-full bg-gray-200 rounded-full h-1.5">
+              <div
+                className="w-full rounded-full h-1"
+                style={{ background: "var(--border)" }}
+              >
                 <div
-                  className="bg-blue-600 h-1.5 rounded-full transition-all"
-                  style={{ width: `${progress}%` }}
+                  className="h-1 rounded-full transition-all"
+                  style={{
+                    width: `${progress}%`,
+                    background: "var(--accent)",
+                  }}
                 />
               </div>
             </div>

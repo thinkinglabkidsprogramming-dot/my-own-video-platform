@@ -61,14 +61,26 @@ export default async function CourseDetailPage({
   const completedCount = completedLessonIds.size;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="max-w-4xl mx-auto px-4 py-10">
       <div className="mb-6">
-        <Link href="/" className="text-sm text-blue-600 hover:underline">
+        <Link
+          href="/"
+          style={{ color: "var(--muted)", fontSize: "0.875rem" }}
+          className="hover:text-[var(--accent)] transition-colors"
+        >
           ← コース一覧に戻る
         </Link>
       </div>
 
-      <div className="bg-white rounded-xl shadow overflow-hidden mb-8">
+      <div
+        style={{
+          background: "var(--card)",
+          border: "1px solid var(--border)",
+          borderRadius: "0.75rem",
+          overflow: "hidden",
+          marginBottom: "2rem",
+        }}
+      >
         {course.thumbnailPath && (
           <div className="relative aspect-video">
             <Image
@@ -80,25 +92,35 @@ export default async function CourseDetailPage({
           </div>
         )}
         <div className="p-6">
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">
+          <h1
+            style={{
+              fontFamily: "'Syne', sans-serif",
+              fontWeight: 800,
+              color: "var(--text)",
+              fontSize: "1.5rem",
+              letterSpacing: "-0.02em",
+              marginBottom: "0.5rem",
+            }}
+          >
             {course.title}
           </h1>
           {course.description && (
-            <p className="text-gray-600 mb-4">{course.description}</p>
+            <p style={{ color: "var(--muted)", marginBottom: "1rem", fontSize: "0.95rem" }}>
+              {course.description}
+            </p>
           )}
           {totalLessons > 0 && (
             <div>
-              <div className="flex justify-between text-sm text-gray-500 mb-1">
+              <div className="flex justify-between text-sm mb-1.5" style={{ color: "var(--muted)" }}>
                 <span>進捗</span>
-                <span>
-                  {completedCount} / {totalLessons} レッスン完了
-                </span>
+                <span>{completedCount} / {totalLessons} レッスン完了</span>
               </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
+              <div className="w-full rounded-full h-1.5" style={{ background: "var(--border)" }}>
                 <div
-                  className="bg-blue-600 h-2 rounded-full transition-all"
+                  className="h-1.5 rounded-full transition-all"
                   style={{
                     width: `${Math.round((completedCount / totalLessons) * 100)}%`,
+                    background: "var(--accent)",
                   }}
                 />
               </div>
@@ -107,33 +129,62 @@ export default async function CourseDetailPage({
         </div>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-3">
         {courseChapters.map((chapter) => (
-          <div key={chapter.id} className="bg-white rounded-xl shadow">
-            <div className="px-6 py-4 border-b">
-              <h2 className="font-semibold text-gray-800">{chapter.title}</h2>
+          <div
+            key={chapter.id}
+            style={{
+              background: "var(--card)",
+              border: "1px solid var(--border)",
+              borderRadius: "0.75rem",
+              overflow: "hidden",
+            }}
+          >
+            <div
+              className="px-5 py-3.5"
+              style={{
+                borderBottom: "1px solid var(--border)",
+                background: "var(--surface)",
+              }}
+            >
+              <h2
+                style={{
+                  fontFamily: "'Syne', sans-serif",
+                  fontWeight: 700,
+                  color: "var(--text)",
+                  fontSize: "0.95rem",
+                }}
+              >
+                {chapter.title}
+              </h2>
             </div>
             <ul>
               {chapter.lessons.map((lesson, index) => {
                 const done = completedLessonIds.has(lesson.id);
                 return (
-                  <li key={lesson.id}>
+                  <li key={lesson.id} style={{ borderBottom: "1px solid var(--border)" }}>
                     <Link
                       href={`/courses/${courseId}/lessons/${lesson.id}`}
-                      className="flex items-center gap-3 px-6 py-3 hover:bg-gray-50 transition"
+                      className="flex items-center gap-3 px-5 py-3 transition-colors"
+                      style={{ color: "var(--text)" }}
+                      onMouseEnter={(e) =>
+                        (e.currentTarget.style.background = "var(--surface)")
+                      }
+                      onMouseLeave={(e) =>
+                        (e.currentTarget.style.background = "transparent")
+                      }
                     >
                       <span
-                        className={`flex-shrink-0 w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs font-bold ${
-                          done
-                            ? "bg-blue-600 border-blue-600 text-white"
-                            : "border-gray-300 text-gray-400"
-                        }`}
+                        className="flex-shrink-0 w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs font-bold"
+                        style={{
+                          background: done ? "var(--accent)" : "transparent",
+                          borderColor: done ? "var(--accent)" : "var(--border)",
+                          color: done ? "#0b0a12" : "var(--muted)",
+                        }}
                       >
                         {done ? "✓" : index + 1}
                       </span>
-                      <span className="text-gray-700 text-sm">
-                        {lesson.title}
-                      </span>
+                      <span className="text-sm">{lesson.title}</span>
                     </Link>
                   </li>
                 );

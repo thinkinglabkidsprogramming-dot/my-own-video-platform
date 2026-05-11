@@ -15,25 +15,48 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="bg-white border-b px-6 py-3 flex items-center justify-between">
-      <Link href="/" className="text-xl font-bold text-blue-600">
-        動画講座
+    <nav
+      style={{
+        background: "var(--surface)",
+        borderBottom: "1px solid var(--border)",
+      }}
+      className="px-6 py-4 flex items-center justify-between"
+    >
+      <Link href="/" className="flex items-center gap-2 group">
+        <span
+          style={{
+            fontFamily: "'Syne', sans-serif",
+            fontWeight: 800,
+            color: "var(--accent)",
+            fontSize: "1.2rem",
+            letterSpacing: "-0.02em",
+            transition: "opacity 0.2s",
+          }}
+          className="group-hover:opacity-80"
+        >
+          動画講座
+        </span>
       </Link>
-      <div className="flex items-center gap-4">
+
+      <div className="flex items-center gap-6">
         {session ? (
           <>
             {session.user.role === "admin" && (
               <Link
                 href="/admin"
-                className="text-sm text-gray-600 hover:text-blue-600"
+                style={{ color: "var(--muted)", fontSize: "0.875rem" }}
+                className="hover:text-white transition-colors"
               >
                 管理画面
               </Link>
             )}
-            <span className="text-sm text-gray-600">{session.user.name}</span>
+            <span style={{ color: "var(--muted)", fontSize: "0.875rem" }}>
+              {session.user.name}
+            </span>
             <button
               onClick={handleSignOut}
-              className="text-sm text-gray-500 hover:text-red-500"
+              style={{ color: "var(--muted)", fontSize: "0.875rem" }}
+              className="hover:text-red-400 transition-colors"
             >
               ログアウト
             </button>
@@ -41,7 +64,16 @@ export default function Navbar() {
         ) : (
           <Link
             href="/login"
-            className="text-sm bg-blue-600 text-white px-4 py-1.5 rounded-lg hover:bg-blue-700"
+            style={{
+              background: "var(--accent)",
+              color: "#0b0a12",
+              fontWeight: 600,
+              padding: "0.4rem 1.1rem",
+              borderRadius: "0.5rem",
+              fontSize: "0.875rem",
+              transition: "background 0.2s",
+            }}
+            className="hover:opacity-90"
           >
             ログイン
           </Link>
