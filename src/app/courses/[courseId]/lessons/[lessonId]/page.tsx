@@ -18,13 +18,7 @@ export default async function LessonPage({
 
   const lesson = await db.query.lessons.findFirst({
     where: eq(lessons.id, lessonId),
-    with: {
-      chapter: {
-        with: {
-          course: true,
-        },
-      },
-    },
+    with: { chapter: { with: { course: true } } },
   });
 
   if (!lesson) notFound();
@@ -32,11 +26,7 @@ export default async function LessonPage({
   const courseChapters = await db.query.chapters.findMany({
     where: eq(chapters.courseId, courseId),
     orderBy: asc(chapters.orderIndex),
-    with: {
-      lessons: {
-        orderBy: asc(lessons.orderIndex),
-      },
-    },
+    with: { lessons: { orderBy: asc(lessons.orderIndex) } },
   });
 
   const session = await auth.api.getSession({ headers: await headers() });
@@ -44,85 +34,46 @@ export default async function LessonPage({
   let completedLessonIds = new Set<string>();
   if (session) {
     const progress = await db.query.userProgress.findMany({
-      where: and(
-        eq(userProgress.userId, session.user.id),
-        eq(userProgress.isCompleted, true)
-      ),
+      where: and(eq(userProgress.userId, session.user.id), eq(userProgress.isCompleted, true)),
     });
     completedLessonIds = new Set(progress.map((p) => p.lessonId));
   }
-
-  const isCompleted = completedLessonIds.has(lessonId);
-  const isLoggedIn = !!session;
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-6 flex gap-6">
       <div className="flex-1 min-w-0">
         <div className="mb-4">
-          <Link
-            href={`/courses/${courseId}`}
-            style={{ color: "var(--muted)", fontSize: "0.875rem" }}
-            className="hover:text-[var(--accent)] transition-colors"
-          >
+          <Link href={`/courses/${courseId}`}
+            style={{ color: "var(--muted)", fontSize: "0.875rem", fontWeight: 500 }}
+            className="hover:[color:var(--accent)] transition-colors">
             ← コース詳細に戻る
           </Link>
         </div>
-        <h1
-          style={{
-            fontFamily: "'Syne', sans-serif",
-            fontWeight: 700,
-            color: "var(--text)",
-            fontSize: "1.25rem",
-            marginBottom: "1rem",
-            letterSpacing: "-0.02em",
-          }}
-        >
+        <h1 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, color: "var(--text)", fontSize: "1.25rem", marginBottom: "1rem", letterSpacing: "-0.02em" }}>
           {lesson.title}
         </h1>
         <LessonPlayer
           videoId={lesson.youtubeVideoId}
           lessonId={lessonId}
           title={lesson.title}
-          isCompleted={isCompleted}
-          isLoggedIn={isLoggedIn}
+          isCompleted={completedLessonIds.has(lessonId)}
+          isLoggedIn={!!session}
         />
       </div>
 
       <aside className="w-72 flex-shrink-0 hidden lg:block">
-        <div
-          className="sticky top-4 overflow-hidden"
-          style={{
-            background: "var(--card)",
-            border: "1px solid var(--border)",
-            borderRadius: "0.75rem",
-          }}
-        >
-          <div
-            className="px-4 py-3"
-            style={{ borderBottom: "1px solid var(--border)" }}
-          >
-            <p
-              className="text-sm truncate"
-              style={{
-                fontFamily: "'Syne', sans-serif",
-                fontWeight: 700,
-                color: "var(--text)",
-              }}
-            >
+        <div className="sticky top-4 overflow-hidden"
+          style={{ background: "var(--card)", border: "1px solid var(--border)", borderRadius: "0.75rem", boxShadow: "0 2px 8px rgba(0,0,0,0.06)" }}>
+          <div className="px-4 py-3" style={{ borderBottom: "1px solid var(--border)" }}>
+            <p className="text-sm truncate" style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, color: "var(--text)" }}>
               {lesson.chapter.course.title}
             </p>
           </div>
           <div className="overflow-y-auto max-h-[70vh]">
             {courseChapters.map((chapter) => (
               <div key={chapter.id}>
-                <div
-                  className="px-4 py-2 text-xs font-semibold uppercase tracking-widest"
-                  style={{
-                    background: "var(--surface)",
-                    color: "var(--muted)",
-                    borderBottom: "1px solid var(--border)",
-                  }}
-                >
+                <div className="px-4 py-2 text-xs font-semibold uppercase tracking-widest"
+                  style={{ background: "#f9f8f6", color: "var(--muted)", borderBottom: "1px solid var(--border)" }}>
                   {chapter.title}
                 </div>
                 <ul>
@@ -131,23 +82,19 @@ export default async function LessonPage({
                     const active = l.id === lessonId;
                     return (
                       <li key={l.id} style={{ borderBottom: "1px solid var(--border)" }}>
-                        <Link
-                          href={`/courses/${courseId}/lessons/${l.id}`}
-                          className="flex items-center gap-2 px-4 py-2.5 text-sm transition-colors"
+                        <Link href={`/courses/${courseId}/lessons/${l.id}`}
+                          className="flex items-center gap-2 px-4 py-2.5 text-sm transition-colors hover:bg-[#f9f8f6]"
                           style={{
-                            background: active ? "rgba(232,184,75,0.1)" : "transparent",
+                            background: active ? "#eff6ff" : "transparent",
                             color: active ? "var(--accent)" : "var(--muted)",
                             fontWeight: active ? 600 : 400,
-                          }}
-                        >
-                          <span
-                            className="flex-shrink-0 w-4 h-4 rounded-full border flex items-center justify-center text-[10px]"
+                          }}>
+                          <span className="flex-shrink-0 w-4 h-4 rounded-full border flex items-center justify-center text-[10px]"
                             style={{
                               background: done ? "var(--accent)" : "transparent",
                               borderColor: done ? "var(--accent)" : "var(--border)",
-                              color: done ? "#0b0a12" : "var(--border)",
-                            }}
-                          >
+                              color: done ? "#ffffff" : "transparent",
+                            }}>
                             {done ? "✓" : ""}
                           </span>
                           <span className="truncate">{l.title}</span>

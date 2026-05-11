@@ -24,30 +24,23 @@ export default function CourseCard({
       : null;
 
   return (
-    <Link href={`/courses/${id}`} className="block group course-card">
+    <Link href={`/courses/${id}`} className="block group">
       <div
         style={{
           background: "var(--card)",
           border: "1px solid var(--border)",
           borderRadius: "0.75rem",
           overflow: "hidden",
-          transition: "border-color 0.2s, transform 0.2s",
+          transition: "box-shadow 0.2s, transform 0.2s",
+          boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
         }}
-        className="group-hover:[border-color:var(--accent)] group-hover:-translate-y-1"
+        className="group-hover:shadow-lg group-hover:-translate-y-1"
       >
-        <div className="relative aspect-video" style={{ background: "var(--border)" }}>
+        <div className="relative aspect-video" style={{ background: "#f0eeea" }}>
           {thumbnailPath ? (
-            <Image
-              src={thumbnailPath}
-              alt={title}
-              fill
-              className="object-cover"
-            />
+            <Image src={thumbnailPath} alt={title} fill className="object-cover" />
           ) : (
-            <div
-              className="flex items-center justify-center h-full text-sm"
-              style={{ color: "var(--muted)" }}
-            >
+            <div className="flex items-center justify-center h-full text-sm" style={{ color: "var(--muted)" }}>
               サムネイルなし
             </div>
           )}
@@ -66,10 +59,7 @@ export default function CourseCard({
             {title}
           </h2>
           {description && (
-            <p
-              className="text-sm mt-1.5 line-clamp-2"
-              style={{ color: "var(--muted)" }}
-            >
+            <p className="text-sm mt-1.5 line-clamp-2" style={{ color: "var(--muted)" }}>
               {description}
             </p>
           )}
@@ -79,9 +69,9 @@ export default function CourseCard({
                 <span>進捗</span>
                 <span>{completedCount}/{totalCount}</span>
               </div>
-              <div className="w-full rounded-full h-1" style={{ background: "var(--border)" }}>
+              <div className="w-full rounded-full h-1.5" style={{ background: "var(--border)" }}>
                 <div
-                  className="h-1 rounded-full transition-all"
+                  className="h-1.5 rounded-full transition-all"
                   style={{ width: `${progress}%`, background: "var(--accent)" }}
                 />
               </div>

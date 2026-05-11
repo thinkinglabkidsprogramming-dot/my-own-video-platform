@@ -2,15 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap');
 
 :root {
-  --bg: #0b0a12;
-  --surface: #131020;
-  --card: #1a1730;
-  --border: #2a2548;
-  --accent: #e8b84b;
-  --accent-hover: #d4a43e;
-  --text: #ede8f5;
-  --muted: #7b769a;
-  --success: #4ade80;
+  --bg: #f6f5f2;
+  --surface: #ffffff;
+  --card: #ffffff;
+  --border: #e8e6e1;
+  --accent: #1d4ed8;
+  --accent-hover: #1e40af;
+  --text: #111827;
+  --muted: #6b7280;
+  --success: #059669;
 }
 
 body {

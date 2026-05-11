@@ -19,10 +19,11 @@ export default function Navbar() {
       style={{
         background: "var(--surface)",
         borderBottom: "1px solid var(--border)",
+        boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
       }}
       className="px-6 py-4 flex items-center justify-between"
     >
-      <Link href="/" className="flex items-center gap-2 group">
+      <Link href="/" className="flex items-center gap-2">
         <span
           style={{
             fontFamily: "'Syne', sans-serif",
@@ -30,9 +31,7 @@ export default function Navbar() {
             color: "var(--accent)",
             fontSize: "1.2rem",
             letterSpacing: "-0.02em",
-            transition: "opacity 0.2s",
           }}
-          className="group-hover:opacity-80"
         >
           動画講座
         </span>
@@ -44,8 +43,8 @@ export default function Navbar() {
             {session.user.role === "admin" && (
               <Link
                 href="/admin"
-                style={{ color: "var(--muted)", fontSize: "0.875rem" }}
-                className="hover:text-white transition-colors"
+                style={{ color: "var(--muted)", fontSize: "0.875rem", fontWeight: 500 }}
+                className="hover:[color:var(--accent)] transition-colors"
               >
                 管理画面
               </Link>
@@ -55,8 +54,8 @@ export default function Navbar() {
             </span>
             <button
               onClick={handleSignOut}
-              style={{ color: "var(--muted)", fontSize: "0.875rem" }}
-              className="hover:text-red-400 transition-colors"
+              style={{ color: "var(--muted)", fontSize: "0.875rem", fontWeight: 500 }}
+              className="hover:text-red-500 transition-colors"
             >
               ログアウト
             </button>
@@ -66,14 +65,13 @@ export default function Navbar() {
             href="/login"
             style={{
               background: "var(--accent)",
-              color: "#0b0a12",
+              color: "#ffffff",
               fontWeight: 600,
               padding: "0.4rem 1.1rem",
               borderRadius: "0.5rem",
               fontSize: "0.875rem",
-              transition: "background 0.2s",
             }}
-            className="hover:opacity-90"
+            className="hover:opacity-90 transition-opacity"
           >
             ログイン
           </Link>
