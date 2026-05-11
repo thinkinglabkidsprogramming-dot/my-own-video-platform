@@ -66,7 +66,7 @@ export default async function CourseDetailPage({
         <Link
           href="/"
           style={{ color: "var(--muted)", fontSize: "0.875rem" }}
-          className="hover:text-[var(--accent)] transition-colors"
+          className="hover:[color:var(--accent)] transition-colors"
         >
           ← コース一覧に戻る
         </Link>
@@ -165,14 +165,8 @@ export default async function CourseDetailPage({
                   <li key={lesson.id} style={{ borderBottom: "1px solid var(--border)" }}>
                     <Link
                       href={`/courses/${courseId}/lessons/${lesson.id}`}
-                      className="flex items-center gap-3 px-5 py-3 transition-colors"
+                      className="flex items-center gap-3 px-5 py-3 transition-colors hover:[background:var(--surface)]"
                       style={{ color: "var(--text)" }}
-                      onMouseEnter={(e) =>
-                        (e.currentTarget.style.background = "var(--surface)")
-                      }
-                      onMouseLeave={(e) =>
-                        (e.currentTarget.style.background = "transparent")
-                      }
                     >
                       <span
                         className="flex-shrink-0 w-6 h-6 rounded-full border-2 flex items-center justify-center text-xs font-bold"

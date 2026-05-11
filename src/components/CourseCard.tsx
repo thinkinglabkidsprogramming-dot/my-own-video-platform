@@ -24,7 +24,7 @@ export default function CourseCard({
       : null;
 
   return (
-    <Link href={`/courses/${id}`} className="block group">
+    <Link href={`/courses/${id}`} className="block group course-card">
       <div
         style={{
           background: "var(--card)",
@@ -33,13 +33,7 @@ export default function CourseCard({
           overflow: "hidden",
           transition: "border-color 0.2s, transform 0.2s",
         }}
-        className="group-hover:-translate-y-1"
-        onMouseEnter={(e) =>
-          (e.currentTarget.style.borderColor = "var(--accent)")
-        }
-        onMouseLeave={(e) =>
-          (e.currentTarget.style.borderColor = "var(--border)")
-        }
+        className="group-hover:[border-color:var(--accent)] group-hover:-translate-y-1"
       >
         <div className="relative aspect-video" style={{ background: "var(--border)" }}>
           {thumbnailPath ? (
@@ -60,15 +54,14 @@ export default function CourseCard({
         </div>
         <div className="p-4">
           <h2
+            className="line-clamp-2 group-hover:[color:var(--accent)]"
             style={{
               fontFamily: "'Syne', sans-serif",
               fontWeight: 700,
               color: "var(--text)",
               fontSize: "1rem",
-              lineClamp: 2,
               transition: "color 0.2s",
             }}
-            className="line-clamp-2 group-hover:text-[var(--accent)]"
           >
             {title}
           </h2>
@@ -84,20 +77,12 @@ export default function CourseCard({
             <div className="mt-3">
               <div className="flex justify-between text-xs mb-1" style={{ color: "var(--muted)" }}>
                 <span>進捗</span>
-                <span>
-                  {completedCount}/{totalCount}
-                </span>
+                <span>{completedCount}/{totalCount}</span>
               </div>
-              <div
-                className="w-full rounded-full h-1"
-                style={{ background: "var(--border)" }}
-              >
+              <div className="w-full rounded-full h-1" style={{ background: "var(--border)" }}>
                 <div
                   className="h-1 rounded-full transition-all"
-                  style={{
-                    width: `${progress}%`,
-                    background: "var(--accent)",
-                  }}
+                  style={{ width: `${progress}%`, background: "var(--accent)" }}
                 />
               </div>
             </div>
